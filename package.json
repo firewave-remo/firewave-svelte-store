@@ -1,0 +1,16 @@
+{
+  "name": "firewave-svelte-store",
+  "version": "0.1.3",
+  "description": "A custom implementation of the svelte store contract",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "prepublishOnly": "npm version patch"
+  },
+  "author": "Remo Fischer",
+  "license": "MIT",
+  "files": [
+    "src"
+  ]
+}
