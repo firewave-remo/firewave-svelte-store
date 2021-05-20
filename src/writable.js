@@ -7,7 +7,7 @@ export const writable = value => {
   /**
    * @type {Set<(T) => void>}
    */
-  let subscriptions = new Set();
+  const subscriptions = new Set();
   let internalValue = value;
 
   // accept a function which needs to be called on value change
