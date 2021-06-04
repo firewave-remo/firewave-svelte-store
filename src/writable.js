@@ -1,7 +1,7 @@
 /**
  * @template T
  * @param {T} value
- * @returns {import("./types.js").WritableStore<T>}
+ * @returns {WritableStore<T>}
  */
 export function writable(value) {
   /**
@@ -79,5 +79,6 @@ export function writable(value) {
     }
   }
 
+  // @ts-ignore
   return store;
 }

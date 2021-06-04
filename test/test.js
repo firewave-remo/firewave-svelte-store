@@ -47,4 +47,6 @@ const newSet = val => {
 
 store.set = newSet;
 
-store.set({ foo: 'bar', bar: 'foo' });
+// store.set({ foo: 'bar', bar: 'foo' });
+
+store.update(value => value);
