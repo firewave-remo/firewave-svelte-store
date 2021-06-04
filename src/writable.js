@@ -1,11 +1,11 @@
 /**
  * @template T
  * @param {T} value
- * @returns {{subscribe: (subscription: T => void) => () => void; set: (value: T) => void; update: (fn: (value: T) => T) => void; get: T;} & T}
+ * @returns {import("./types.js").WritableStore<T>}
  */
-export const writable = value => {
+export function writable(value) {
   /**
-   * @type {Set<(T) => void>}
+   * @type {Set<(value: T) => void>}
    */
   const subscriptions = new Set();
   let internalValue = value;
@@ -16,10 +16,9 @@ export const writable = value => {
    *
    * Returns function to unsubscribe
    *
-   * @param {(T) => void} subscription
-   * @returns
+   * @param {(value: T) => void} subscription
    */
-  const subscribe = subscription => {
+  function subscribe(subscription) {
     subscriptions.add(subscription);
 
     // immediatly call the function on subscription
@@ -29,32 +28,35 @@ export const writable = value => {
     return () => {
       subscriptions.delete(subscription);
     };
-  };
+  }
 
   /**
    * Set a new value for the store
    *
    * @param {T} value
    */
-  const set = value => {
+  function set(value) {
     internalValue = value;
     subscriptions.forEach(sub => sub(internalValue));
-  };
+  }
 
   /**
    * Update store value.
    *
    * @param {(value: T) => T} fn
-   * @returns
    */
-  const update = fn => set(fn(internalValue));
+  function update(fn) {
+    set(fn(internalValue));
+  }
 
   /**
    * Get the internal value of the store
    *
    * @returns {T}
    */
-  const get = () => internalValue;
+  function get() {
+    return internalValue;
+  }
 
   const store = { subscribe, set, update, get };
 
@@ -78,4 +80,4 @@ export const writable = value => {
   }
 
   return store;
-};
+}

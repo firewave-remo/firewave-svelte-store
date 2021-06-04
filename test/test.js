@@ -22,7 +22,7 @@ console.log(store.foo);
 
 /////////////////////
 
-store.set({ foo: 'foobar' });
+store.set({ foo: 'foobar', bar: '' });
 
 console.log(store.foo);
 
@@ -36,3 +36,15 @@ console.log(store.foo);
 /////////////////////
 
 console.log(store.get().foo);
+
+////////////////////
+
+const oldSet = store.set;
+
+const newSet = val => {
+  oldSet({ foo: '13163564646', bar: 'foo' });
+};
+
+store.set = newSet;
+
+store.set({ foo: 'bar', bar: 'foo' });
