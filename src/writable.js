@@ -75,7 +75,7 @@ export function writable(value) {
       Object.defineProperty(store, prop, {
         get: () => internalValue[prop],
         set: propVal => store.set({ ...internalValue, [prop]: propVal }),
-        enumerable: true,
+        enumerable: true, // This is just to make it possible to use JSON stringify on the store
       });
     }
   }
