@@ -75,6 +75,7 @@ export function writable(value) {
       Object.defineProperty(store, prop, {
         get: () => internalValue[prop],
         set: propVal => store.set({ ...internalValue, [prop]: propVal }),
+        enumerable: true,
       });
     }
   }
