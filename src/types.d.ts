@@ -12,4 +12,4 @@ interface Writable<T> {
   get: Getter<T>;
 }
 
-type WritableStore<T> = Writable<T> & T;
+export type WritableStore<T> = Writable<T> & T;

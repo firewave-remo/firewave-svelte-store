@@ -1,7 +1,7 @@
 /**
  * @template T
  * @param {T} value
- * @returns {WritableStore<T>}
+ * @returns {import("./types.js").WritableStore<T>}
  */
 export function writable(value) {
   /**
